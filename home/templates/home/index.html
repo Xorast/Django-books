@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    
+    <h1>Welcome to the ultimate book app!</h1>
+
+    <p>This app enable you to list the book you read and write comment about them.</p>
+
+    <ul>
+        {% for book in books %}
+        <li> {{ book.title  }} </li>
+        <li> {{ book.author }} </li>
+        <li> {{ book.ISBN   }} </li>
+        <li> {{ book.date   }} </li>
+        <li> {{ book.notes  }} </li>
+        <img src="{% static "media/book_cover/LePetitPrince.jpg" %}" alt="My image">
+        <!--https://docs.djangoproject.com/en/dev/howto/static-files/#basic-usage-->
+        {% endfor %}
+    </ul>
+
+{% endblock content %}
