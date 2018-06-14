@@ -15,10 +15,20 @@ Including another URLconf
 """
 from django.conf.urls   import url, include
 from django.contrib     import admin
-
+# Need the following to render the image :
+from django.views.static     import serve
+from django.conf             import settings
+from django.conf.urls.static import static
+from django.views            import static
+# ---
 from home               import urls as home_url
+from accounts           import urls as accounts_url
+from books              import urls as books_url
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(home_url)),
+    url(r'^accounts/', include(accounts_url)),
+    url(r'^books/', include(books_url)),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT})
 ]

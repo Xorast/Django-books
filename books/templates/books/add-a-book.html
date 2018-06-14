@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+{% load bootstrap_tags %}
+
+{% block content %}
+    
+    <h1>You can add a book to your list.</h1>
+
+    <p>Here is the page that enables you to do so.</p>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <input type="submit" value="Add"/>
+    </form>
+{% endblock content %}
